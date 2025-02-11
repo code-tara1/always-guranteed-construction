@@ -61,3 +61,7 @@ body {
 .swiper-navigation {
   @apply absolute top-[50%] translate-y-[-50%] z-[99] bg-white p-[10px] rounded-full w-[35px] h-[35px] flex items-center justify-center;
 }
+
+.input-text {
+  @apply h-[40px] rounded-[5px] border-[1px] border-[#7E7E7E] bg-white p-6;
+}
