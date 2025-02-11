@@ -18,4 +18,96 @@
     <span class="text-primary-500">Always Guaranteed Construction </span>is
     committed to ensuring the work needed is completed fast, efficiently.
   </p>
+  <div class="swiper mySwiper max-w-[1440px] w-full mx-auto">
+    <div class="swiper-wrapper"></div>
+    <button class="swiper-navigation left-0" onclick="handlePrevSlide()">
+      <img src="/assets/icons/caret.svg" alt="Previous" />
+    </button>
+    <button class="swiper-navigation right-0" onclick="handleNextSlide()">
+      <img src="/assets/icons/caret.svg" alt="Previous" class="rotate-180" />
+    </button>
+  </div>
+  <button class="primary-btn-2 w-[170px] h-[60px]">View More</button>
 </div>
+
+<script>
+  const slides = [
+    {
+      title: "Remodeling",
+      image: "/assets/images/service-1.png",
+      icon: "/assets/images/house.png",
+      bg: "bg-gradient-to-b from-[#005CDC] to-[#0D3875]",
+    },
+    {
+      title: "Roofing",
+      image: "/assets/images/service-2.png",
+      icon: "/assets/images/house.png",
+      bg: "bg-black",
+    },
+    {
+      title: "Custom Home",
+      image: "/assets/images/service-3.png",
+      icon: "/assets/images/house.png",
+      bg: "bg-black",
+    },
+  ];
+
+  const swiperWrapper = document.querySelector(".swiper-wrapper");
+  for (let i = 0; i < 3; i++) {
+    slides.forEach((slide) => {
+      // Append slides 3 times
+      for (let i = 0; i < 3; i++) {
+        slides.forEach((slide) => {
+          const slideHTML = `
+        <div class="swiper-slide  max-h-[282px] rounded-[5px] overflow-hidden relative">
+          <img src="${slide.image}" alt="${slide.title}" class="rounded-[5px]" />
+          <div class="absolute bottom-0 bg-gradient-to-t  from-black from-0% to-transparent to-100% w-full">
+            <div class='flex gap-[16px] p-[30px]'>
+              <div class="${slide.bg} outline  outline-white/70 outline-[7px] flex items-center justify-center aspect-square w-[57px] h-[57px] rounded-full p-[8px] ">
+                <img src="${slide.icon}" alt="${slide.title}" class='max-w-[30px] max-h-[30px] object-contain mx-auto aspect-square' />
+              </div>
+            <div class="flex flex-col items-start gap-1">
+              <p class="text-white font-viga leading-[30px] text-[20px] md:text-[24px]">${slide.title}</p>
+              <a href="#" class="text-primary-500">Read More</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+          swiperWrapper.insertAdjacentHTML("beforeend", slideHTML);
+        });
+      }
+    });
+  }
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      640: {
+        slidesPerView: 2,
+      },
+
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+
+  handleNextSlide = () => {
+    swiper.slideNext();
+  };
+
+  handlePrevSlide = () => {
+    swiper.slidePrev();
+  };
+</script>
